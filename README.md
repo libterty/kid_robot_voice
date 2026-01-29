@@ -1,6 +1,5 @@
 # 🤖 家庭陪讀機器人 - 極簡開發版
 
-> 專為 Mac M3 Max 設計的輕量級開發環境  
 > **新增：支援本地 Ollama - 完全免費、無需網路、保護隱私！**
 
 ## 🎯 專案目標
@@ -139,34 +138,6 @@ python scripts/voice_chat.py
 
 ---
 
-## 🆓 為什麼選擇 Gemini？
-
-### 成本比較
-
-| 功能 | OpenAI | Google Gemini |
-|------|--------|---------------|
-| 對話 | GPT-4o-mini<br>$0.15/1M tokens | Gemini 2.0 Flash<br>**完全免費**（有額度限制） |
-| TTS | $15/1M 字元 | gTTS **完全免費** |
-| STT | $0.006/分鐘 | Google Speech<br>**每月 60 分鐘免費** |
-
-**每日測試成本**: OpenAI ~$1 → Gemini **$0** ✨
-
-### 效能比較
-
-- ⚡ **速度**: Gemini 2.0 Flash 比 GPT-4o-mini 快 2-3 倍
-- 🎯 **準確度**: 繁體中文理解能力相當
-- 💰 **免費額度**: 每分鐘 15 次請求（對測試綽綽有餘）
-
-## 🔑 取得 Gemini API Key
-
-1. 前往 [Google AI Studio](https://aistudio.google.com/apikey)
-2. 登入你的 Google 帳號
-3. 點選「Get API Key」
-4. 複製你的 API Key
-5. 貼到 `.env` 檔案中
-
-**完全免費！不需要綁信用卡！** 🎉
-
 ## 📁 專案結構
 
 ```
@@ -203,7 +174,7 @@ kid_robot_project/
 
 ### 測試 1: AI 對話能力
 ```bash
-python scripts/test_voice.py
+python scripts/voice_chat.py
 ```
 會測試：
 - ✅ Gemini API 連線
@@ -229,26 +200,32 @@ python scripts/demo_chat.py
 編輯 `.env` 檔案：
 
 ```bash
-# Google Gemini API
-GEMINI_API_KEY=your_gemini_api_key_here   # 必填
-GEMINI_MODEL=gemini-2.0-flash-exp          # 推薦使用最新版
+# AI 後端選擇 (ollama 或 gemini)
+AI_BACKEND=ollama
 
-# 語音設定
-TTS_LANGUAGE=zh-TW                         # gTTS 語言
-TTS_SLOW=false                             # 是否慢速播放
-STT_LANGUAGE=zh-TW                         # 語音辨識語言
+# Ollama 設定（本地運行，免費）
+OLLAMA_HOST=http://localhost:11434
+OLLAMA_MODEL=llama3.2:3b
+
+# Google Gemini API 設定（雲端，需 API Key）
+# GEMINI_API_KEY=your_gemini_api_key_here
+# GEMINI_MODEL=gemini-1.5-flash
 
 # 系統設定
 LOG_LEVEL=INFO
-SAVE_CONVERSATION=true                     # 是否儲存對話記錄
+SAVE_CONVERSATION=true
+DATA_DIR=./data
+
+# 語音設定（使用 gTTS - Google Text-to-Speech）
+TTS_LANGUAGE=zh-TW
+TTS_SLOW=false
+STT_LANGUAGE=zh-TW
+
+# 視覺設定
+CAMERA_ID=0
+DETECTION_CONFIDENCE=0.5
+
 ```
-
-## 💰 成本估算（完全免費！）
-
-使用 Google 免費服務的每日成本：
-- **Gemini 2.0 Flash**: 免費（每分鐘 15 次請求）
-- **gTTS**: 完全免費
-- **Google Speech Recognition**: 每月 60 分鐘免費
 
 **預估一天測試成本**: $0 USD ✨
 
@@ -258,35 +235,3 @@ SAVE_CONVERSATION=true                     # 是否儲存對話記錄
 - [ ] Week 3: 加入對話記憶功能（記得小孩喜好）
 - [ ] Week 4: 整合視覺追蹤（在螢幕上模擬跟隨）
 - [ ] Week 5+: 考慮硬體整合（Raspberry Pi / Jetson）
-
-## 🐛 常見問題
-
-**Q: 我沒有 Gemini API Key 怎麼辦？**  
-A: 去 https://aistudio.google.com/apikey 申請，完全免費，不需要信用卡！
-
-**Q: 出現模型 404 錯誤怎麼辦？**  
-A: 不用擔心！程式已經改成**自動選擇模型**，只要填入 API Key 就會自動找到可用的模型。如果還是有問題，執行 `python scripts/check_gemini_models.py` 查看詳細資訊。
-
-**Q: 我想查看我有哪些可用的模型？**  
-A: 執行 `python scripts/check_gemini_models.py`
-
-**Q: gTTS 的語音品質如何？**  
-A: 對於陪讀機器人來說足夠清晰，而且是 Google 官方的語音引擎
-
-**Q: 有請求次數限制嗎？**  
-A: 免費版每分鐘 15 次請求，對測試來說綽綽有餘
-
-**Q: 攝像頭權限被拒絕？**  
-A: 系統偏好設定 > 隱私權與安全性 > 相機 > 勾選 Terminal
-
-**Q: 遇到其他問題？**  
-A: 查看 [故障排除指南](TROUBLESHOOTING.md)
-
-## 📝 授權
-
-MIT License - 隨便改隨便用
-
----
-
-**Made with ❤️ for 未來的陪讀小助手**  
-**Powered by Google Gemini 🚀**
