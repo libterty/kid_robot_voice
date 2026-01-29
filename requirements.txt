@@ -1,0 +1,20 @@
+# AI 語音互動核心 - 支援多種後端
+ollama>=0.3.0  # 本地 Ollama (推薦)
+# google-genai>=0.2.0  # Google Gemini (雲端，需 API Key)
+python-dotenv>=1.0.0
+
+# 語音處理
+gtts>=2.5.0  # Google Text-to-Speech（免費）
+SpeechRecognition>=3.10.0  # 語音辨識（免費）
+pyaudio>=0.2.14  # 麥克風錄音
+
+# 視覺辨識
+opencv-python>=4.9.0
+mediapipe>=0.10.9
+numpy>=1.26.0
+
+# 資料處理
+requests>=2.31.0
+
+# 開發工具（選用）
+ipython>=8.20.0
