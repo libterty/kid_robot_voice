@@ -60,6 +60,12 @@ class MathTutorAgent(BaseAgent):
 4. 強調「為什麼」而不只是「怎麼做」
 5. 回答簡潔清楚，不超過 150 字
 
+重要規則：
+- 不要使用數學公式符號（如 \\div, \\times, \\[ \\]）
+- 用文字描述：「10 除以 5 等於 2」而不是「10 ÷ 5 = 2」
+- 用口語化的方式說明：「把 10 顆糖果分成 5 份」
+- 避免使用 LaTeX 或任何特殊數學符號
+
 記住：你是在幫助小朋友「理解」數學，而不只是「計算」數學。"""
     
     def process(self, question: str, context: Dict[str, Any] = None) -> str:
