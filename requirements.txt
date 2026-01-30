@@ -4,9 +4,14 @@ ollama>=0.3.0  # 本地 Ollama (推薦)
 python-dotenv>=1.0.0
 
 # 語音處理
-gtts>=2.5.0  # Google Text-to-Speech（免費）
-SpeechRecognition>=3.10.0  # 語音辨識（免費）
-pyaudio>=0.2.14  # 麥克風錄音
+--extra-index-url https://download.pytorch.org/whl/cpu 
+torch>=2.5.0           # 確保使用最新版支援 3.13
+openai-whisper
+gtts>=2.5.0
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.14
+setuptools>=70.0.0     # 3.13 對編譯工具有更高要求
+pydub>=0.25.1
 
 # 視覺辨識
 opencv-python>=4.9.0
