@@ -15,7 +15,7 @@ pydub>=0.25.1
 
 # 視覺辨識
 opencv-python>=4.9.0
-mediapipe>=0.10.9
+mediapipe>=0.10.32
 numpy>=1.26.0
 
 # 資料處理

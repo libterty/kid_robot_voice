@@ -1,8 +1,4 @@
-"""
-視覺辨識模組
-包含人體偵測、追蹤等功能
-"""
+from .face_detector_lite import LightweightFaceDetector
+from .kid_tracker_lite import KidTrackerLite
 
-from .detector import PersonDetector
-
-__all__ = ['PersonDetector']
+__all__ = ['LightweightFaceDetector', 'KidTrackerLite']

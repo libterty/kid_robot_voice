@@ -26,6 +26,8 @@ data/audio/*.wav
 data/logs/*.json*
 *.mp4
 *.avi
+models/*
+face_database/*
 
 # macOS
 .DS_Store
